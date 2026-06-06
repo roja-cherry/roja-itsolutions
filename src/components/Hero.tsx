@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Hero() {
   const openWhatsapp = () => {
     window.open(
-      "https://wa.me/919947658410?text=Hi%20RoJa%20IT%20Solutions,%20I%20need%20technical%20support.",
+      "https://wa.me/+966543571468?text=Hi%20RoJa%20IT%20Solutions,%20I%20need%20technical%20support.",
       "_blank"
     );
   };

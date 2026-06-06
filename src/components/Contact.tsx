@@ -28,10 +28,10 @@ export default function Contact() {
                   <h3 className="font-semibold">Phone</h3>
 
                   <a
-                    href="tel:+919947658410"
+                    href="tel:+966543571468"
                     className="text-slate-600 hover:text-blue-600"
                   >
-                    +91 99476 58800
+                    +966 54357 1468
                   </a>
                 </div>
               </div>
@@ -55,7 +55,7 @@ export default function Contact() {
             </div>
 
             <a
-              href="https://wa.me/919947658410?text=Hi%20RoJa%20IT%20Solutions,%20I%20need%20technical%20support."
+              href="https://wa.me/+966543571468?text=Hi%20RoJa%20IT%20Solutions,%20I%20need%20technical%20support."
               target="_blank"
               rel="noopener noreferrer"
               className="
