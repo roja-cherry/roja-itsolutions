@@ -1,53 +1,12 @@
-import {
-  Monitor,
-  Wifi,
-  Wrench,
-  Settings,
-  Globe,
-  Code2,
-  Workflow,
-  Bot,
-} from "lucide-react";
+import { Globe, Workflow, Bot, Headphones } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
-const personalServices = [
-  {
-    icon: Monitor,
-    title: "PC & Laptop Support",
-    description:
-      "Fix slow systems, software issues, crashes, setup problems and everyday computer troubles.",
-  },
-  {
-    icon: Wifi,
-    title: "Wi-Fi & Network Support",
-    description:
-      "Troubleshoot connectivity issues, improve Wi-Fi coverage and configure home networks.",
-  },
-  {
-    icon: Wrench,
-    title: "Technical Troubleshooting",
-    description:
-      "Get help diagnosing and resolving hardware, software and system-related problems.",
-  },
-  {
-    icon: Settings,
-    title: "Device & Software Setup",
-    description:
-      "Set up computers, applications, peripherals, backups and other everyday technology.",
-  },
-];
-
-const businessServices = [
+const services = [
   {
     icon: Globe,
-    title: "Website Development",
+    title: "Web Development",
     description:
-      "Modern, responsive websites designed to help small businesses build their online presence.",
-  },
-  {
-    icon: Code2,
-    title: "Web & API Development",
-    description:
-      "Custom web applications, REST APIs and software solutions tailored to your business needs.",
+      "Modern, responsive websites designed to help businesses build credibility, reach customers and generate enquiries.",
   },
   {
     icon: Workflow,
@@ -59,7 +18,13 @@ const businessServices = [
     icon: Bot,
     title: "AI Solutions",
     description:
-      "Explore practical AI solutions such as chatbots, intelligent assistants and AI-powered workflows.",
+      "Practical AI solutions designed around real business needs, from intelligent assistants to workflow automation.",
+  },
+  {
+    icon: Headphones,
+    title: "IT Support",
+    description:
+      "Reliable remote technical support for everyday software, computer and technology problems.",
   },
 ];
 
@@ -67,20 +32,31 @@ function ServiceCard({
   icon: Icon,
   title,
   description,
+  index,
 }: {
   icon: React.ElementType;
   title: string;
   description: string;
+  index: number;
 }) {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <div
+    <motion.div
+      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
       className="
         group
-        rounded-2xl
+        flex
+        flex-col
+        justify-between
+        rounded-3xl
         border
         border-slate-200
         bg-white
-        p-6
+        p-8
         transition-all
         duration-300
         hover:-translate-y-2
@@ -88,90 +64,68 @@ function ServiceCard({
         hover:shadow-2xl
         hover:bg-gradient-to-br
         hover:from-white
-        hover:to-blue-50
+        hover:to-blue-50/50
       "
     >
-      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 transition-colors duration-300 group-hover:bg-blue-600">
-        <Icon
-          size={28}
-          className="text-blue-600 transition-colors duration-300 group-hover:text-white"
-        />
+      <div>
+        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 transition-colors duration-300 group-hover:bg-blue-600">
+          <Icon
+            size={28}
+            className="text-blue-600 transition-colors duration-300 group-hover:text-white"
+            aria-hidden="true"
+          />
+        </div>
+
+        <h3 className="mb-3 text-xl font-bold text-slate-900">{title}</h3>
+
+        <p className="text-sm leading-relaxed text-slate-600">{description}</p>
       </div>
 
-      <h3 className="mb-3 text-xl font-semibold">{title}</h3>
-
-      <p className="text-slate-600">{description}</p>
-    </div>
+      <div className="mt-8 h-1 w-10 rounded-full bg-slate-100 transition-all duration-300 group-hover:w-full group-hover:bg-blue-600" />
+    </motion.div>
   );
 }
 
 export default function Services() {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <section id="services" className="bg-white py-24">
+    <section id="services" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="mb-16 text-center">
-          <span className="font-semibold uppercase tracking-wider text-blue-600">
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55 }}
+          className="mb-16 text-center"
+        >
+          <span className="font-semibold uppercase tracking-widest text-blue-600">
             What We Do
           </span>
 
-          <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
+          <h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
             Technology Solutions That Work
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-slate-600">
-            From everyday technical support to websites, software and
-            automation, we provide practical solutions for individuals and
-            small businesses.
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            Practical digital services designed to help small and growing
+            businesses establish a solid online presence, automate manual work
+            and leverage intelligent tools.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Personal IT Support */}
-        <div className="mb-16">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-slate-900">
-              Personal IT Support
-            </h3>
-
-            <p className="mt-2 text-slate-600">
-              Get your everyday technology working the way it should.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {personalServices.map((service) => (
-              <ServiceCard
-                key={service.title}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Business Solutions */}
-        <div>
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-slate-900">
-              Business Technology Solutions
-            </h3>
-
-            <p className="mt-2 text-slate-600">
-              Build, improve and automate the technology behind your business.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {businessServices.map((service) => (
-              <ServiceCard
-                key={service.title}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-              />
-            ))}
-          </div>
+        {/* 4 Core Services Grid */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service, index) => (
+            <ServiceCard
+              key={service.title}
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              index={index}
+            />
+          ))}
         </div>
       </div>
     </section>
