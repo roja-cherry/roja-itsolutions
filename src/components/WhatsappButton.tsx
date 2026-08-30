@@ -1,11 +1,17 @@
 import { MessageCircle } from "lucide-react";
+import { CONTACT } from "../config/contact";
 
 export default function WhatsappButton() {
+  const message = encodeURIComponent(
+    "Hi RoJa IT Solutions, I would like to know more about your services."
+  );
+
   return (
     <a
-      href="https://wa.me/+966543571468"
+      href={`https://wa.me/${CONTACT.whatsapp.replace("+", "")}?text=${message}`}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Chat with RoJa IT Solutions on WhatsApp"
       className="
         fixed
         bottom-6
@@ -22,9 +28,11 @@ export default function WhatsappButton() {
         shadow-xl
         transition
         hover:scale-105
+        hover:bg-green-600
       "
     >
       <MessageCircle size={22} />
+
       <span className="font-medium">
         WhatsApp
       </span>
