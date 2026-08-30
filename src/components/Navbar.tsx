@@ -46,6 +46,13 @@ export default function Navbar() {
           </a>
 
           <a
+            href="#portfolio"
+            className="text-sm font-medium text-slate-600 transition hover:text-blue-600"
+          >
+            Portfolio
+          </a>
+
+          <a
             href="#about"
             className="text-sm font-medium text-slate-600 transition hover:text-blue-600"
           >
@@ -87,7 +94,15 @@ export default function Navbar() {
               onClick={closeMenu}
               className="font-medium text-slate-700 transition hover:text-blue-600"
             >
-              Services
+            Services
+          </a>
+
+            <a
+              href="#portfolio"
+              onClick={closeMenu}
+              className="font-medium text-slate-700 transition hover:text-blue-600"
+            >
+              Portfolio
             </a>
 
             <a
