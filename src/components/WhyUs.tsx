@@ -4,6 +4,7 @@ import {
   ShieldCheck,
   Headphones,
 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const features = [
   {
@@ -34,90 +35,116 @@ const features = [
 
 const capabilities = [
   {
-    title: "IT Support",
-    description: "Everyday technology problems",
-  },
-  {
     title: "Web Development",
     description: "Modern business websites",
   },
   {
-    title: "Software",
-    description: "Custom web & API solutions",
+    title: "Business Automation",
+    description: "Workflow & task automation",
   },
   {
-    title: "Automation & AI",
-    description: "Smarter business workflows",
+    title: "AI Solutions",
+    description: "Intelligent business tools",
+  },
+  {
+    title: "IT Support",
+    description: "Everyday technology problems",
   },
 ];
 
 export default function WhyUs() {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <section id="about" className="bg-slate-950 py-24 text-white">
+    <section id="about" className="bg-slate-950 py-24 sm:py-32 text-white">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="text-center">
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55 }}
+          className="text-center"
+        >
           <span className="font-semibold uppercase tracking-widest text-blue-400">
             Why RoJa
           </span>
 
-          <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
             Technology Should Make Life Easier
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-slate-400">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
             Whether you need help fixing a technical problem or want to build
             something for your business, we focus on practical solutions that
             actually solve the problem.
           </p>
-        </div>
+        </motion.div>
 
         {/* Capabilities */}
         <div className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-4">
-          {capabilities.map((capability) => (
-            <div key={capability.title} className="text-center">
-              <p className="text-2xl font-bold text-blue-400 md:text-3xl">
+          {capabilities.map((capability, index) => (
+            <motion.div
+              key={capability.title}
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="text-center"
+            >
+              <p className="text-xl font-bold text-blue-400 sm:text-2xl md:text-3xl">
                 {capability.title}
               </p>
 
-              <p className="mt-2 text-sm text-slate-400 md:text-base">
+              <p className="mt-2 text-sm text-slate-400 sm:text-base">
                 {capability.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Features */}
-        <div className="mt-24 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature) => {
+        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, index) => {
             const Icon = feature.icon;
 
             return (
-              <div
+              <motion.div
                 key={feature.title}
+                initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="
+                  group
                   rounded-3xl
                   border
                   border-slate-800
-                  bg-slate-900/50
+                  bg-slate-900/60
                   p-8
-                  transition
+                  transition-all
                   duration-300
                   hover:-translate-y-2
                   hover:border-blue-500
                   hover:bg-slate-900
                 "
               >
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10">
-                  <Icon size={28} className="text-blue-400" />
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 transition-colors duration-300 group-hover:bg-blue-600">
+                  <Icon
+                    size={28}
+                    className="text-blue-400 transition-colors duration-300 group-hover:text-white"
+                    aria-hidden="true"
+                  />
                 </div>
 
-                <h3 className="mb-3 text-xl font-semibold">
+                <h3 className="mb-3 text-xl font-bold text-white">
                   {feature.title}
                 </h3>
 
-                <p className="text-slate-400">{feature.description}</p>
-              </div>
+                <p className="text-sm leading-relaxed text-slate-400">
+                  {feature.description}
+                </p>
+              </motion.div>
             );
           })}
         </div>
