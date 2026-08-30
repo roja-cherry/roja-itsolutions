@@ -1,0 +1,5 @@
+import { motion } from 'framer-motion'
+
+export function Story() {
+  return <section id="story" className="section story"><motion.figure className="story-photo image-panel" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: .3 }}><img src="/images/malabar-interior.png" alt="Warm, contemporary Kerala-inspired dining room" loading="lazy" /><figcaption className="photo-note">Rooted in place</figcaption></motion.figure><div className="story-copy"><p className="eyebrow">Our story</p><h2>A Taste of <em>Malabar</em></h2><p className="lead">Malabar Table brings together Kerala’s rich culinary traditions with a contemporary dining experience made for lingering.</p><p>From the pepper coast to the family table, our kitchen honours time-tested recipes, carefully sourced ingredients and the easy generosity of Kerala hospitality. Every dish is an invitation to share.</p><div className="story-detail"><span>01</span><p>Layered with spice, coconut, curry leaf and a little modern imagination.</p></div></div></section>
+}

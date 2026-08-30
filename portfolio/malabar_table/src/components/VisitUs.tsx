@@ -1,0 +1,6 @@
+import { Clock3, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { directionsUrl, whatsappUrl } from '../config/contact'
+
+export function VisitUs() {
+  return <section id="visit" className="section visit"><div className="visit-map"><img src="/images/malabar-entrance.png" alt="A warmly lit contemporary Kerala restaurant entrance at dusk" loading="lazy" /><div><MapPin size={28} /><p>Kozhikode, Kerala</p></div></div><div className="visit-copy"><p className="eyebrow">Find your way</p><h2>Visit Malabar <em>Table</em></h2><p className="lead">A contemporary dining destination inspired by the rich culinary traditions of Malabar.</p><div className="visit-details"><p><MapPin size={18} /><span><b>Find us</b>12 Market Road, Kozhikode, Kerala 673001</span></p><p><Clock3 size={18} /><span><b>Opening hours</b>Daily, 11:30 am – 11:00 pm</span></p><p><Phone size={18} /><span><b>Call us</b><a href="tel:+966543571468">+966 54357 1468</a></span></p><p><MessageCircle size={18} /><span><b>WhatsApp</b><a href={whatsappUrl} target="_blank" rel="noreferrer">Send us a message</a></span></p></div><a className="button button-dark" href={directionsUrl} target="_blank" rel="noreferrer">Get Directions</a></div></section>
+}
